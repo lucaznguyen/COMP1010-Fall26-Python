@@ -2,7 +2,7 @@
 
 **Course:** COMP1010 - Introduction to Programming  
 **Week:** 01  
-**Date:** September 22, 2026
+**Date:** September 23, 2026
 
 Lab 01 introduces the Python environment and basic input and output. The official handout contains the submission rules and full problem statements.
 
