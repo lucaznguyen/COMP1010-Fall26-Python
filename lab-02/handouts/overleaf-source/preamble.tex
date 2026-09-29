@@ -1,0 +1,131 @@
+% ---------- Page layout ----------
+\usepackage[a4paper,margin=20mm,top=15mm,bottom=35mm]{geometry}
+\usepackage{microtype}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+% ---------- Fonts (pdfLaTeX) ----------
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}     % Times-like text + math
+\usepackage[scaled=0.95]{helvet}     % Helvetica-like sans for headings
+
+% ---------- Colors ----------
+\usepackage{xcolor}
+\definecolor{accent}{RGB}{199,33,39}  % exact red from the figure
+\definecolor{exbar}{RGB}{136,136,136} % dark grey rule
+\definecolor{exbg}{RGB}{233,233,233}  % light grey background
+\usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor}
+
+% ---------- Headings ----------
+\usepackage{titlesec}
+\titleformat{\section}
+  {\color{accent}\sffamily\bfseries\large}
+  {\textcolor{accent}{\thesection}}
+  {0.8em}{}
+\titlespacing*{\section}{0pt}{1.2ex plus .2ex}{0.6ex}
+
+\titleformat{\subsection}
+  {\color{accent}\sffamily\bfseries}
+  {\textcolor{accent}{\thesubsection}}
+  {0.8em}{}
+\titlespacing*{\subsection}{0pt}{1.2ex plus .2ex}{0.6ex}
+
+% ---------- Boxes (definitions, examples) ----------
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+
+% Definition box: left red bar, white background, numbered in section
+\newtcbtheorem[number within=section]{example}{Examples}%
+{enhanced, sharp corners, breakable, colback=white, boxrule=0pt,
+ left=7.5pt, right=2pt, top=5pt, bottom=4pt,
+ borderline west={4pt}{0pt}{accent},
+ fonttitle=\sffamily\bfseries, coltitle=white}%
+{def}
+
+% ---------- Math helpers ----------
+\usepackage{amsmath}
+
+
+% ---------- Code -------------------
+\usepackage{listings}
+
+\lstdefinestyle{mypython}{
+  language=Python,
+  backgroundcolor=\color{white},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{green!40!black},
+  commentstyle=\color{gray},
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  tabsize=4,
+}
+
+\lstdefinestyle{question}{
+  language=Python,
+  backgroundcolor=\color{gray!12},   % gray background
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{green!40!black},
+  commentstyle=\color{gray!70},
+  showstringspaces=false,
+  breaklines=true,
+  numbers=none,                      % no line numbers
+  frame=none,                        % no top/bottom lines or box
+  tabsize=4,
+}
+
+\lstdefinestyle{answer}{
+  language=Python,
+  backgroundcolor=\color{white},   % gray background
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{green!40!black},
+  commentstyle=\color{gray!70},
+  showstringspaces=false,
+  breaklines=true,
+  numbers=none,                      % no line numbers
+  frame=none,                        % no top/bottom lines or box
+  tabsize=4,
+}
+
+
+% -------- Page Style
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+\newcommand{\mydate}{%
+  \ifcase\month 
+    \or Jan\or Feb\or Mar\or Apr\or May\or Jun%
+    \or Jul\or Aug\or Sep\or Oct\or Nov\or Dec%
+  \fi \text{} %
+  \ifnum\day<10 0\fi\number\day \text{} %
+  \number\year%
+}
+
+\newcommand{\logo}{VinUni_logo_01.png}
+\newcommand{\coursename}{Introduction to Programming}
+
+\pagestyle{fancy}
+\headheight 57.60004pt
+%\headsep 50pt
+\fancyhead[L]{\includegraphics[height=1.8\baselineskip]{\logo}}
+\fancyhead[R]{\\College of Engineering and Computer Science\\
+\coursename, \mydate
+}
+
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[L]{COMP1010 - Fall 2026}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage/\pageref{LastPage}}
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\setlist[itemize]{leftmargin=0.9em}
+
+\usepackage{multicol}

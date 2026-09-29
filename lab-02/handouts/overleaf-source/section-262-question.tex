@@ -1,0 +1,212 @@
+\documentclass[12pt,oneside,openany]{article}
+
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+\includegraphics[width=6cm]{VinUniLogo.png}
+\end{center}
+
+% First page centered title
+\begin{center}
+{
+    \color{accent}\sffamily\bfseries\Huge Lab 02: Expressions, Data Types,\\and Operators
+}
+\\
+\vspace{0.2cm}
+{
+\sffamily\bfseries\Huge Week 02, Section: IPRFAL262
+}
+\\
+\vspace{0.2cm}
+{
+\sffamily\bfseries College of Engineering and Computer Science, Introduction to Programming
+}
+\end{center}
+
+
+\vspace{1cm}
+\section*{Submission Instructions:}
+
+\begin{itemize}
+    \item Your program should work correctly on all inputs. If there are any specifications about how the program should be written (or how the output should appear), those specifications should be followed.
+    \item Your code and functions/modules should be appropriately commented. However, try to avoid making your code overly busy (e.g., include a comment on every line).
+    \item Variables and functions should have meaningful names, and code should be organized into functions/methods where appropriate.
+    \item The code should be written in Python 3.* (e.g., 3.7, 3.8, 3.9, etc.) and \href{https://comp1010fall2026.contest.codeforces.com/}{\textcolor{accent}{\textbf{Codeforces}}} platform will be used for lab practices.
+    \item You should upload your .py file(s) to Canvas \textcolor{accent}{\textbf{before the end of the lab session}}. It is required to submit your code \textbf{on both Codeforces and Canvas} (the code should be the same on both platforms); otherwise, it will not be graded if it is missing from either platform.
+    \item Submit separate \textcolor{accent}{\textbf{.py}} file for each Lab problem with the following naming format: \textbf{LabX\_PY\_Z.py}, where \textbf{X}, \textbf{Y}, \textbf{Z} identify the lab index, problem index and student ID, respectively.
+\end{itemize}
+
+
+\newpage
+% ===========================
+% Problem 1
+% ===========================
+\section*{Problem 1: Share the Stickers}
+
+You have \texttt{stickers} stickers to share equally among \texttt{students}. Find how many stickers each student receives and how many stickers are left over.
+
+\subsection*{Input}
+\begin{itemize}
+    \item One line containing \texttt{stickers} and \texttt{students}, separated by a space, where $0 \leq \texttt{stickers} \leq 10^9$ and $1 \leq \texttt{students} \leq 10^6$.
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print two integers: stickers per student, then stickers left over.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+29 4
+
+Output:
+7 1
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+48 6
+
+Output:
+8 0
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\newpage
+% ===========================
+% Problem 2
+% ===========================
+\section*{Problem 2: Study Room Access}
+
+A study room can be used by someone who has a valid access card and is either a student or a staff member. Given these three yes/no answers, report whether the card is valid, whether the person is a student or staff member, and whether the person can enter. Each answer is the exact word \texttt{True} or \texttt{False}.
+
+\subsection*{Input}
+\begin{itemize}
+    \item Three lines: whether the person has a valid card, whether they are a student, and whether they are a staff member.
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print \texttt{Card is valid: ...}, \texttt{Student/staff requirement: ...}, and \texttt{Can enter: ...}, each on its own line. Replace \texttt{...} with \texttt{True} or \texttt{False}.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+True
+True
+False
+
+Output:
+Card is valid: True
+Student/staff requirement: True
+Can enter: True
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+False
+False
+True
+
+Output:
+Card is valid: False
+Student/staff requirement: True
+Can enter: False
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\newpage
+% ===========================
+% Problem 3
+% ===========================
+\section*{Problem 3: Minutes to Seconds}
+
+The number of minutes is given as text. Convert it to an integer, then calculate the same amount of time in seconds.
+
+\subsection*{Input}
+\begin{itemize}
+    \item One line containing a non-negative whole number of minutes, written using digits only ($0 \leq \texttt{minutes} \leq 10^4$).
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print the total number of seconds.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+5
+
+Output:
+300
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+12
+
+Output:
+720
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\newpage
+% ===========================
+% Problem 4
+% ===========================
+\section*{Problem 4: Make a Message Tag}
+
+Given a one-word message and a repeat count, repeat the message that many times. Then make a tag from the repeat count, a hyphen, and the repeated message. The hyphen is the literal dash character \texttt{-} between the count and the message.
+
+\subsection*{Input}
+\begin{itemize}
+    \item Two lines: a word with no spaces (1 to 20 English letters), then a repeat count from 1 to 5.
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print \texttt{Message: } followed by the repeated message. On the next line, print \texttt{Tag: } followed by the repeat count, the literal hyphen \texttt{-}, and the repeated message.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+Hi
+3
+
+Output:
+Message: HiHiHi
+Tag: 3-HiHiHi
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+Go
+1
+
+Output:
+Message: Go
+Tag: 1-Go
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\end{document}

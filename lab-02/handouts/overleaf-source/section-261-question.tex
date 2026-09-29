@@ -1,0 +1,218 @@
+\documentclass[12pt,oneside,openany]{article}
+
+\input{preamble.tex}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+\includegraphics[width=6cm]{VinUniLogo.png}
+\end{center}
+
+% First page centered title
+\begin{center}
+{
+    \color{accent}\sffamily\bfseries\Huge Lab 02: Expressions, Data Types,\\and Operators
+}
+\\
+\vspace{0.2cm}
+{
+\sffamily\bfseries\Huge Week 02, Section: IPRFAL261
+}
+\\
+\vspace{0.2cm}
+{
+\sffamily\bfseries College of Engineering and Computer Science, Introduction to Programming
+}
+\end{center}
+
+
+\vspace{1cm}
+\section*{Submission Instructions:}
+
+\begin{itemize}
+    \item Your program should work correctly on all inputs. If there are any specifications about how the program should be written (or how the output should appear), those specifications should be followed.
+    \item Your code and functions/modules should be appropriately commented. However, try to avoid making your code overly busy (e.g., include a comment on every line).
+    \item Variables and functions should have meaningful names, and code should be organized into functions/methods where appropriate.
+    \item The code should be written in Python 3.* (e.g., 3.7, 3.8, 3.9, etc.) and \href{https://comp1010fall2026.contest.codeforces.com/}{\textcolor{accent}{\textbf{Codeforces}}} platform will be used for lab practices.
+    \item You should upload your .py file(s) to Canvas \textcolor{accent}{\textbf{before the end of the lab session}}. It is required to submit your code \textbf{on both Codeforces and Canvas} (the code should be the same on both platforms); otherwise, it will not be graded if it is missing from either platform.
+    \item Submit separate \textcolor{accent}{\textbf{.py}} file for each Lab problem with the following naming format: \textbf{LabX\_PY\_Z.py}, where \textbf{X}, \textbf{Y}, \textbf{Z} identify the lab index, problem index and student ID, respectively.
+\end{itemize}
+
+
+\newpage
+% ===========================
+% Problem 1
+% ===========================
+\section*{Problem 1: Integer Arithmetic}
+
+Given integers \texttt{a} and \texttt{b}, print their sum, difference, product, floor quotient, and remainder, in that order. Use Python's \texttt{//} for floor division and \texttt{\%} for remainder. For example, \texttt{-5 // 3} is \texttt{-2}.
+
+\subsection*{Input}
+\begin{itemize}
+    \item One line containing \texttt{a} and \texttt{b}, separated by a space, where $-10^6 \leq a \leq 10^6$ and $1 \leq b \leq 10^6$.
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print the five results on one line, separated by spaces.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+5 3
+
+Output:
+8 2 15 1 2
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+-5 3
+
+Output:
+-2 -8 -15 -2 1
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\newpage
+% ===========================
+% Problem 2
+% ===========================
+\section*{Problem 2: Who Can Join the Workshop?}
+
+The workshop accepts people aged 18 through 25, inclusive. A person can join only if they are a student or a staff member. Given the person's age and student/staff status, report whether they meet the age rule, whether they meet the student-or-staff rule, and whether they can join. Each status is given as the exact word \texttt{True} or \texttt{False}.
+
+\subsection*{Input}
+\begin{itemize}
+    \item Three lines: the person's age, whether they are a student, and whether they are a staff member. The age is between 0 and 120.
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print three lines in this order: \texttt{Age requirement: ...}, \texttt{Student/staff requirement: ...}, and \texttt{Can join: ...}. Replace each \texttt{...} with \texttt{True} or \texttt{False}.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+20
+True
+False
+
+Output:
+Age requirement: True
+Student/staff requirement: True
+Can join: True
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+17
+False
+True
+
+Output:
+Age requirement: False
+Student/staff requirement: True
+Can join: False
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\newpage
+% ===========================
+% Problem 3
+% ===========================
+\section*{Problem 3: Number Base Snapshot}
+
+Given a non-negative integer \texttt{n}, print its binary, octal, and hexadecimal representations with Python's standard prefixes.
+
+\subsection*{Input}
+\begin{itemize}
+    \item One integer \texttt{n}, where $0 \leq n \leq 10^6$.
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print \texttt{bin(n)}, \texttt{oct(n)}, and \texttt{hex(n)} on three separate lines, in that order.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+23
+
+Output:
+0b10111
+0o27
+0x17
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+64
+
+Output:
+0b1000000
+0o100
+0x40
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\newpage
+% ===========================
+% Problem 4
+% ===========================
+\section*{Problem 4: Make a Student Badge}
+
+You are given an uppercase letter \texttt{c}, a non-negative integer \texttt{k}, and a student ID. Move \texttt{c} forward by \texttt{k} places in the alphabet. For example, moving \texttt{A} forward by 3 places gives \texttt{D}. The input guarantees that the new letter does not go past \texttt{Z}. Print the new letter, then make a badge from the student ID, a hyphen, and the new letter written twice. The hyphen is the literal dash character \texttt{-} between the ID and the letters; print it as text, not as a subtraction sign.
+
+\subsection*{Input}
+\begin{itemize}
+    \item Three lines: an uppercase English letter \texttt{c}, an integer \texttt{k} ($0 \leq k \leq 25$), and a student ID ($1 \leq \texttt{studentId} \leq 10^6$).
+\end{itemize}
+
+\subsection*{Output}
+\begin{itemize}
+    \item Print \texttt{New letter: } followed by the new letter. On the next line, print \texttt{Badge: } followed by the student ID, the literal hyphen \texttt{-}, and the new letter twice.
+\end{itemize}
+\vspace{0.2cm}
+
+\begin{example*}{}{}
+\begin{multicols}{2}
+\textbf{Example 1}
+\begin{verbatim}
+Input:
+A
+3
+17
+
+Output:
+New letter: D
+Badge: 17-DD
+\end{verbatim}
+\textbf{Example 2}
+\begin{verbatim}
+Input:
+M
+5
+42
+
+Output:
+New letter: R
+Badge: 42-RR
+\end{verbatim}
+\end{multicols}
+\end{example*}
+\end{document}

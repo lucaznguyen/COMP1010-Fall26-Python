@@ -1,6 +1,6 @@
 # COMP1010 - Introduction to Programming | Fall 2026
 
-Course materials for COMP1010 at VinUniversity. This repository currently contains Lab 01.
+Course materials for COMP1010 at VinUniversity. Lab materials are added as they become available.
 
 ## Course Staff
 
@@ -23,13 +23,14 @@ Course materials for COMP1010 at VinUniversity. This repository currently contai
 | Week | Topic | Lab |
 | --- | --- | --- |
 | 01 | Introduction to Programming | [Lab 01: Getting Started With Python](lab-01/README.md) |
+| 02 | Expressions, Data Types, and Operators | [Lab 02](lab-02/README.md) |
 
 ## Lab Assignments
 
 - Set up Python and PyCharm using the [environment setup guide](setup-tutorial.md).
 - Review the [Codeforces and Canvas submission instructions](lab-tutorial.md).
-- Read the [Lab 01 overview and handout](lab-01/README.md).
-- Use the [Lab 01 completion checklist](grading-criteria.md); course grading and late-submission rules follow the official course policy.
+- Prepare with the [Lab 01 guide](lab-01/README.md) and [Lab 02 guide and section handouts](lab-02/README.md).
+- Use the checklist linked from each lab; course grading and late-submission rules follow the official course policy.
 
 ## Sources and Resources
 
