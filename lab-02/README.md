@@ -51,13 +51,87 @@ quantity_text = input()
 quantity = int(quantity_text)
 ```
 
-For multiple values on one line, split the line and convert each part:
+### Reading Two Numbers on the Same Line
+
+Some problems put two numbers on one line, separated by whitespace. For example:
+
+```text
+17 5
+```
+
+Use this pattern to read both values as integers:
 
 ```python
 first, second = map(int, input().split())
 ```
 
-For a step-by-step explanation, examples, and common mistakes, see the [tutorial on reading two numbers from one line](two-numbers-one-line.md).
+Here is what happens in that one line of code:
+
+1. `input()` reads the whole line as text: `"17 5"`.
+2. `.split()` separates the line at whitespace, producing `"17"` and `"5"`.
+3. `map(int, ...)` converts both pieces from strings to integers.
+4. Python assigns the two integers to `first` and `second`.
+
+The same steps written out more explicitly are:
+
+```python
+parts = input().split()
+first = int(parts[0])
+second = int(parts[1])
+```
+
+Both approaches expect exactly two values. With no argument, `.split()` handles one space, multiple spaces, or tabs between values.
+
+For example, this complete program reads two integers and prints their sum:
+
+```python
+first, second = map(int, input().split())
+total = first + second
+print(total)
+```
+
+Input:
+
+```text
+17 5
+```
+
+Output:
+
+```text
+22
+```
+
+Remember that `input().split()` alone returns strings. If you write `first, second = input().split()`, then `first` is `"17"`, not the integer `17`; using `+` on those strings joins them, so `"17" + "5"` becomes `"175"`. Use `map(int, ...)` when you need to do arithmetic.
+
+Common mistakes:
+
+| Mistake | Why it fails | Use this instead |
+| --- | --- | --- |
+| `int(input())` when the line is `17 5` | `int()` cannot convert the entire two-value string | Split the line, then convert each value |
+| `first, second = input().split()` followed by arithmetic | The values are still strings | Use `map(int, input().split())` |
+| `first, second = input()` | Python tries to unpack individual characters | Add `.split()` to separate whitespace-delimited values |
+| Typing `17, 5` when the format says two space-separated numbers | A comma is not whitespace, so the line does not split into two values | Type `17 5`, unless the problem explicitly specifies commas |
+| Printing `Enter two numbers:` before reading | Online judges expect only the requested output | Call `input()` without a prompt |
+
+If the input contains a count followed by one pair per line, read the count first and then read each pair inside a loop:
+
+```text
+3
+8 2
+10 4
+7 1
+```
+
+```python
+pair_count = int(input())
+
+for _ in range(pair_count):
+    first, second = map(int, input().split())
+    print(first + second)
+```
+
+Follow the input layout in the problem statement. If it specifies only one pair, read only one line; do not add a loop or wait for extra input. In PyCharm, run the program and type both values on one line (for example, `17 5`) before pressing Enter. For an online judge, do not print prompts, and match the required output exactly.
 
 Use `str(value)` when a numeric value must be joined to text with `+`. An f-string is another clear way to put a value inside a label:
 
