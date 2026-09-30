@@ -3,20 +3,11 @@
 **Course:** COMP1010 - Introduction to Programming  
 **Week:** 02
 
-This guide reviews the Python concepts used across the Fall 2026 Lab 02 section variants. It includes small examples and study guidance, but does not provide solutions to the assigned problems. Read the handout for your assigned section before starting.
+This guide reviews Python concepts for Lab 02 with small examples and study guidance. It does not contain the section question sheets or solutions. Get the question sheet for your assigned section from the official course source before starting.
 
-## Section Handouts
+## Question Sheet
 
-The latest local Overleaf source set contains four question-only variants. Choose the one matching your section:
-
-| Section | Question source | Problem themes |
-| --- | --- | --- |
-| IPRFAL261 | [Section 261 handout source](handouts/overleaf-source/section-261-question.tex) | Integer arithmetic, Boolean conditions, number bases, character codes, and formatted strings |
-| IPRFAL262 | [Section 262 handout source](handouts/overleaf-source/section-262-question.tex) | Quotient and remainder, Boolean conditions, type conversion, and string repetition |
-| IPRFAL263 | [Section 263 handout source](handouts/overleaf-source/section-263-question.tex) | Time arithmetic, Boolean logic, character codes, and formatted strings |
-| IPRFAL264 | [Section 264 handout source](handouts/overleaf-source/section-264-question.tex) | Arithmetic and powers, Boolean conditions, character conversion, and string repetition |
-
-The question files, shared LaTeX preamble, and logo assets are in [`handouts/overleaf-source`](handouts/overleaf-source). See the [handout notes](handouts/README.md) for opening and compiling a section file in Overleaf. Solution files are intentionally excluded.
+Question sheets are distributed through the official course source and are not stored in this repository. Make sure you use the sheet assigned to your section. The [handout notes](handouts/README.md) explain this repository's scope.
 
 ## What You Will Practice
 
@@ -141,7 +132,7 @@ For Codeforces submissions, read only the input described by the problem and pri
 
 ## Submission Checklist
 
-- Use the question source for your assigned section; the four variants are not interchangeable.
+- Use the question sheet for your assigned section; sheets may differ between sections.
 - Write each solution in Python 3 and save a separate `.py` file for each problem.
 - Follow the handout's naming format `LabX_PY_Z.py` (for Lab 02, use `Lab2_P1_<YourStudentID>.py` for Problem 1).
 - Follow all input, output, and implementation requirements in the handout.
