@@ -54,10 +54,10 @@ quantity = int(quantity_text)
 For multiple values on one line, split the line and convert each part:
 
 ```python
-first_text, second_text = input().split()
-first = int(first_text)
-second = int(second_text)
+first, second = map(int, input().split())
 ```
+
+For a step-by-step explanation, examples, and common mistakes, see the [tutorial on reading two numbers from one line](two-numbers-one-line.md).
 
 Use `str(value)` when a numeric value must be joined to text with `+`. An f-string is another clear way to put a value inside a label:
 
