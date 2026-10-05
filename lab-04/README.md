@@ -1,6 +1,7 @@
 # Lab 04: Modules, Strings, Testing, and Debugging
 
-**Course:** COMP1010 - Introduction to Programming  
+**Course:** COMP1010 - Introduction to Programming
+
 **Preparation lectures:** Lecture 06 - Creating and Importing Modules; Lecture 07 - Strings
 
 This first pass uses the current IPRFAL261 assignment to check scope, then reviews the concepts in Lectures 06 and 07 with independent Python examples. It does not reproduce section question sheets or provide their solutions. Section variants may differ, so get the handout assigned to you from the [official course source](handouts/README.md).
