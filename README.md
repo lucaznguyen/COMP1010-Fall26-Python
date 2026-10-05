@@ -24,12 +24,13 @@ Course materials for COMP1010 at VinUniversity. Lab materials are added as they 
 | --- | --- | --- |
 | 01 | Introduction to Programming | [Lab 01: Getting Started With Python](lab-01/README.md) |
 | 02 | Expressions, Data Types, and Operators | [Lab 02](lab-02/README.md) |
+| 04 | Modules and Strings | [Lab 04 guide](lab-04/README.md) |
 
 ## Lab Assignments
 
 - Set up Python and PyCharm using the [environment setup guide](setup-tutorial.md).
 - Review the [Codeforces and Canvas submission instructions](lab-tutorial.md).
-- Prepare with the [Lab 01 guide](lab-01/README.md) and [Lab 02 guide](lab-02/README.md). Get each lab's question sheet from the official course source.
+- Prepare with the [Lab 01 guide](lab-01/README.md), [Lab 02 guide](lab-02/README.md), and [Lab 04 guide](lab-04/README.md). Get each lab's question sheet from the official course source.
 - Use the checklist linked from each lab; course grading and late-submission rules follow the official course policy.
 
 ## Sources and Resources
