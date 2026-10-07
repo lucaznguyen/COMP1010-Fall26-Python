@@ -13,6 +13,7 @@ You may assume inputs satisfy each problem's stated constraints. The lab does no
 ## What you should be able to do
 
 - Define a function, call it with the required arguments, and use its return value.
+- Add basic parameter and return type annotations, and understand what they do and do not do.
 - Write a docstring for **every** function, including a nested helper.
 - Use a default parameter while still reading exactly the input specified by the problem.
 - Define and call a helper inside an outer function when a problem requires one.
@@ -28,8 +29,8 @@ Before coding, write down five things from **your section's** question sheet:
 | Question to answer | Why it matters |
 | --- | --- |
 | What lines are in the input, and what type is each value? | `input()` reads one line of text, not “all remaining numbers.” |
-| What exact function names and parameters are required? | A correct calculation can still violate an implementation requirement. |
-| What should each function **return**? | A function that only prints may not meet a “must return” requirement. |
+| What exact function names, parameters, and parameter types are required? | A correct calculation can still violate an implementation requirement. An annotation documents the type you expect to receive. |
+| What should each function **return**, and what type is that value? | A function that only prints may not meet a “must return” requirement. Its return annotation should describe the actual returned value. |
 | What exactly must the program print? | Labels, spaces, punctuation, units, line breaks, and decimal places matter. |
 | What are the valid limits? | Test endpoints and avoid dividing by a value that is allowed to be zero. |
 
@@ -37,10 +38,10 @@ In particular, a default parameter in a function does **not** automatically mean
 
 ## 2. Defining and calling a function
 
-The `def` statement creates a function. Its body runs only when you call it. Parameter names belong to the definition; argument values are supplied by the caller.
+The `def` statement creates a function. Its body runs only when you call it. Parameter names belong to the definition; argument values are supplied by the caller. The `: int` and `-> int` in this first example describe expected types; Section 3 explains that syntax in detail.
 
 ```python
-def multiply_by_scale(value, scale):
+def multiply_by_scale(value: int, scale: int) -> int:
     """Multiply a measurement by a scale factor.
 
     Args:
@@ -64,7 +65,7 @@ Common mistakes:
 
 ```python
 # These are examples of mistakes, not code to submit.
-# def multiply_by_scale(value, scale)  # Missing colon.
+# def multiply_by_scale(value: int, scale: int) -> int  # Missing colon.
 # result = multiply_by_scale(7)        # Missing one required argument.
 # print(scaled_value)                  # Local variable is not visible here.
 ```
@@ -74,7 +75,7 @@ Indentation is part of Python syntax. Keep the statements inside a function cons
 ### `return` is different from `print`
 
 ```python
-def double_and_print(number):
+def double_and_print(number: int) -> None:
     """Print twice the number without returning a useful value.
 
     Args:
@@ -86,7 +87,7 @@ def double_and_print(number):
     print(number * 2)
 
 
-def double_and_return(number):
+def double_and_return(number: int) -> int:
     """Return twice the number.
 
     Args:
@@ -99,14 +100,72 @@ def double_and_return(number):
     return result
 ```
 
-If the question says “the function must return,” use the second pattern. Printing inside `double_and_print` does not make the function return its printed number; its return value is `None`. In a lab program, the usual flow is **read input → call function → store one return value → print the required output**. If a problem asks for two output lines, two separately called functions may each return one value, which you print on separate lines.
+If the question says “the function must return,” use the second pattern. Printing inside `double_and_print` does not make the function return its printed number; its return value is `None`, which is why its return annotation is `-> None`. In a lab program, the usual flow is **read input → call function → store one return value → print the required output**. If a problem asks for two output lines, two separately called functions may each return one value, which you print on separate lines.
 
-## 3. Docstrings: required for every function
+## 3. Parameter and return type annotations
+
+An **annotation** states the type a function expects or returns. Put `: type` after each parameter name and `-> type` after the closing parenthesis, before the colon that starts the function body:
+
+```python
+def scale_measurement(reading: float, factor: float = 2.0) -> float:
+    """Multiply a measurement by a scale factor.
+
+    Args:
+        reading: The original measurement.
+        factor: The factor to apply; defaults to 2.0.
+
+    Returns:
+        The scaled measurement.
+    """
+    result = reading * factor
+    return result
+```
+
+Read the first line as: `reading` should be a `float`; `factor` should be a `float` and defaults to `2.0`; the function should return a `float`. The default value goes **after** the annotation: `factor: float = 2.0`. A required parameter such as `reading` has no `= ...` part. The final colon after `-> float` is still required by `def`.
+
+For this lab, the most useful types are:
+
+| Annotation | Meaning | Typical use |
+| --- | --- | --- |
+| `int` | A whole-number value. | Counts and integer scores. |
+| `float` | A numeric value that may have a fractional part. | Measurements, rates, and calculated decimal values. |
+| `str` | Text. | A label or a formatted string returned by a function. |
+| `None` | No useful value is returned. | A function that only prints or performs an action. |
+
+Choose the **return** annotation from what the function actually returns, not from what it reads or prints. Here the input parameter is numeric, but the returned f-string is text:
+
+```python
+def describe_length(length_cm: float) -> str:
+    """Format a length as a short text label.
+
+    Args:
+        length_cm: A length in centimeters.
+
+    Returns:
+        A label containing the length to one decimal place.
+    """
+    label = f"Length: {length_cm:.1f} cm"
+    return label
+
+
+result = describe_length(12.5)
+print(result)  # Length: 12.5 cm
+```
+
+By contrast, a function that returns the unformatted numeric result should use `-> float`; formatting that result later in `print(f"{result:.2f}")` does **not** change the function's return type. A function that only calls `print()` and has no value-bearing `return` uses `-> None`, as shown in Section 2. Do not use `-> str` just because the final program output is text: look at the specific value returned by **that function**.
+
+Type annotations **do not convert or enforce values at runtime**. `input()` still returns `str`, even when the receiving function says `value: int` or `value: float`. Convert input explicitly with `int(...)` or `float(...)` before passing it to the function. Python can run a call with an incorrectly typed argument; an editor such as PyCharm may flag the mismatch, and the code may fail later when it tries to use that value. An annotation is a readable contract, not a replacement for input conversion, a docstring, or the function's actual `return` statement.
+
+For example, if the input line is `12`, then `text_value = input()` stores the string `"12"`. `number = int(text_value)` creates the integer `12`, which can be passed to a parameter annotated `: int`. Passing `text_value` directly to that parameter would **not** convert it. This guide uses annotations to make function contracts clear; check your official question sheet for which annotations, if any, are explicitly required in your submission.
+
+Avoid adding type syntax you have not learned, such as `tuple[int, int]`, to these lab examples. A function can return one `int`, one `float`, or one formatted `str`; if the question requires several printed values, you can also call separate functions and print each returned value. Follow the return behavior required by your own section's question sheet.
+
+## 4. Docstrings: required for every function
 
 A docstring is a string placed immediately after the function header. It should explain purpose, parameters, and return value. A comment beginning with `#` elsewhere in the function is not a replacement for its docstring.
 
 ```python
-def grams_to_kilograms(grams):
+def grams_to_kilograms(grams: float) -> float:
     """Convert grams to kilograms.
 
     Args:
@@ -119,14 +178,14 @@ def grams_to_kilograms(grams):
     return kilograms
 ```
 
-For Lab 03, also document any **inner helper function** you define. Give names that explain what the values mean. Comments are useful for non-obvious steps, but avoid a comment on every line.
+For Lab 03, also document any **inner helper function** you define. Type annotations and docstrings do different jobs: `grams: float` and `-> float` identify expected types, while the docstring explains that the units change from grams to kilograms. Give names that explain what the values mean. Comments are useful for non-obvious steps, but avoid a comment on every line.
 
-## 4. Default arguments are part of the call, not the input format
+## 5. Default arguments are part of the call, not the input format
 
 A default value is used when the caller omits that argument. Required parameters must come before parameters with defaults.
 
 ```python
-def add_tip(amount, tip_rate=0.05):
+def add_tip(amount: float, tip_rate: float = 0.05) -> float:
     """Return an amount after adding a tip.
 
     Args:
@@ -140,22 +199,22 @@ def add_tip(amount, tip_rate=0.05):
     return total
 
 
-standard_total = add_tip(100)       # Uses 0.05.
-custom_total = add_tip(100, 0.10)  # Overrides the default.
+standard_total = add_tip(100.0)       # Uses 0.05.
+custom_total = add_tip(100.0, 0.10)  # Overrides the default.
 print(f"{standard_total:.2f}")     # 105.00
 print(f"{custom_total:.2f}")       # 110.00
 ```
 
-This example demonstrates both kinds of call. In an assigned problem that specifically says to use the default, call the function with **only** the required argument(s). Do not invent a third input value or an `if` to decide whether one was supplied. A percentage written as 5% is the decimal `0.05` in a calculation, not `5`.
+This example demonstrates both kinds of call. The annotation on `tip_rate` comes **before** `= 0.05`, and `-> float` describes the numeric amount returned by `return total`. In an assigned problem that specifically says to use the default, call the function with **only** the required argument(s). Do not invent a third input value or an `if` to decide whether one was supplied. A percentage written as 5% is the decimal `0.05` in a calculation, not `5`.
 
-Arguments can also be named, as in `add_tip(amount=100, tip_rate=0.10)`. Whether you use positional or named arguments, the values must match the function's parameters. For the assigned problems, keep the required function names and parameter order from the question sheet.
+Arguments can also be named, as in `add_tip(amount=100.0, tip_rate=0.10)`. Whether you use positional or named arguments, the values must match the function's parameters. For the assigned problems, keep the required function names and parameter order from the question sheet.
 
-## 5. Nested helper functions
+## 6. Nested helper functions
 
 A helper may live inside a function when it is only needed there. The outer function can call the helper; code outside the outer function cannot directly call that inner name.
 
 ```python
-def report_height(height_meters):
+def report_height(height_meters: float) -> str:
     """Return a formatted height in centimeters.
 
     Args:
@@ -164,7 +223,7 @@ def report_height(height_meters):
     Returns:
         A string showing the height in centimeters.
     """
-    def to_centimeters(value_meters):
+    def to_centimeters(value_meters: float) -> float:
         """Convert a height from meters to centimeters.
 
         Args:
@@ -186,9 +245,9 @@ result = report_height(height)
 print(result)  # Height: 175.00 cm
 ```
 
-Notice that **both** functions have docstrings, the helper returns a single number, and the outer function returns a single formatted string. Do not return a tuple when the question asks for one string or one number. Do not replace the required helper with an unrelated top-level function if the question explicitly says “inside.”
+Notice that **both** functions have parameter and return annotations as well as docstrings. The helper returns a single number (`-> float`), while the outer function returns a single formatted string (`-> str`). Do not return a tuple when the question asks for one string or one number. Do not replace the required helper with an unrelated top-level function if the question explicitly says “inside.”
 
-## 6. Importing a module and using its names
+## 7. Importing a module and using its names
 
 A module provides names such as functions and constants. Import it before using them:
 
@@ -205,9 +264,9 @@ Use `**` for exponentiation (`3 ** 2` is `9`); `^` is **not** Python's power ope
 
 You may also see `from math import sqrt`, after which you call `sqrt(81)` without the `math.` prefix. Pick one style and use its matching call syntax. If you use `math.sqrt(...)`, you need `import math` first. Avoid naming your own program `math.py`, because Python may import that file instead of the standard module. The current Lab 03 questions ask for one `.py` file per problem; do not invent a second module file unless your official sheet specifically requests one.
 
-## 7. Read exactly the input that exists
+## 8. Read exactly the input that exists
 
-`input()` returns a string representing **one line**. Convert it to the type you need.
+`input()` returns a string representing **one line**. A function annotation does not change that. Convert each input value to the type its parameter expects before calling the function.
 
 ### One value on one line
 
@@ -256,7 +315,7 @@ second_z = float(second_line[2])
 
 This is a reading pattern, not a solution to any assigned calculation. If the question has only one line, do not call `input()` a second time: the program will wait for input that never arrives. In Codeforces, do not use prompts such as `input("Enter a number: ")`; prompts create unwanted output.
 
-## 8. Format output exactly
+## 9. Format output exactly
 
 An f-string formats a value at the point where you build the output. A number's **value** and its displayed **format** are different things.
 
@@ -267,7 +326,7 @@ An f-string formats a value at the point where you build the output. A number's 
 | `f"{3:02d}"` | `03` | A two-digit integer field with a leading zero. |
 | `f"{12.345:.2f}"` | `12.35` | Display rounding, not truncation. |
 
-For a **single returned string**, format inside the function and print that one return value. For **two output lines**, print two values on separate lines:
+For a **single returned string**, format inside the function, annotate its return as `-> str`, and print that one return value. If a function returns a numeric value, annotate that numeric return type and format it later when printing. For **two output lines**, print two values on separate lines:
 
 ```python
 first_result = 7.0
@@ -280,12 +339,12 @@ The code prints `7.00` and `0.50` on separate lines. Add labels or units only if
 
 Floating-point values cannot represent every decimal exactly. Small representation differences can affect a value very close to a rounding boundary. Use the precision requested by the question (`.2f`, `.4f`, etc.), test nearby values, and do not manually cut digits off a string. If a formatted positive value is very small, `0.00` can be the correct two-decimal display even though the underlying number is not zero.
 
-## 9. A complete independent example
+## 10. A complete independent example
 
 This small program reads a decimal parcel weight and an integer number of parcels from **one line**. It returns one formatted label. It is not one of the Lab 03 questions.
 
 ```python
-def make_parcel_label(weight_kg, parcels):
+def make_parcel_label(weight_kg: float, parcels: int) -> str:
     """Build a label for a parcel shipment.
 
     Args:
@@ -306,9 +365,9 @@ result = make_parcel_label(weight_kg, parcels)
 print(result)
 ```
 
-If the input is `2.5 3`, the output is `Shipment: 2.50 kg, 3 parcels`. Trace the four stages: read text, convert two different types, call the function, print its single returned string. To test the display edge, try a valid input with `0` weight if your **own** exercise permits zero; never assume a lab problem permits it without reading its constraints.
+If the input is `2.5 3`, the output is `Shipment: 2.50 kg, 3 parcels`. Trace the four stages: read text, convert to `float` and `int` to match the parameters, call the function, and print its single returned `str`. To test the display edge, try a valid input with `0` weight if your **own** exercise permits zero; never assume a lab problem permits it without reading its constraints.
 
-## 10. Extreme-case testing for the current four sections
+## 11. Extreme-case testing for the current four sections
 
 Start with the samples on your official question sheet, then try these **additional valid cases**. These are test ideas, not answer keys. Run only the row for the section and problem you were assigned. Do not add handling for out-of-range values unless an instructor changes the specification.
 
@@ -342,13 +401,15 @@ An “extreme” test must still satisfy the specific problem's constraints. For
 5. Test a value near an output-rounding boundary; verify decimal places and units.
 6. Rerun after the final edit, then submit the **same** `.py` file on both platforms.
 
-## 11. Debugging checklist
+## 12. Debugging checklist
 
 | Symptom | Likely cause | Check |
 | --- | --- | --- |
 | The program waits forever or gets `EOFError` online | Too many `input()` calls | Count the input lines in the question sheet. |
 | `ValueError` while reading a line with several values | Tried to convert the whole line at once | Split the line, then convert each element. |
 | `TypeError` during arithmetic | Forgot `int()`/`float()`, or used the wrong number of arguments | Inspect input conversions and the function signature. |
+| An annotated parameter still receives text from `input()` | Assumed `: int` or `: float` converts the argument | Convert with `int(...)` or `float(...)` before the call. |
+| The return annotation disagrees with the result | Used `-> float` for a formatted string, or `-> str` for an unformatted number | Check the expression following `return`; an f-string returns `str`. |
 | `NameError` for a helper | Called it outside its enclosing function, or misspelled its name | Check scope, indentation, and spelling. |
 | A correct-looking result is marked wrong | Output has a prompt, missing decimal zeroes, wrong units/spaces, or an extra line | Compare the output with the required format exactly. |
 | A function call produces `None` | Function printed instead of returning | Ensure the required value reaches a `return` statement. |
@@ -357,13 +418,13 @@ An “extreme” test must still satisfy the specific problem's constraints. For
 
 Use temporary `print()` calls in PyCharm to inspect intermediate values while debugging, but remove them before submitting. They become extra output in an online judge. Do not add `if`/`else`, exception handling, or input prompts to compensate for inputs the sheet says cannot occur.
 
-## 12. Optional extra practice (not part of the assigned lab)
+## 13. Optional extra practice (not part of the assigned lab)
 
-These four **new** exercises are for students who want more practice. They are not section problems and are **not required submissions**. Write your own solution with a docstring for every function; no solutions are provided here. Assume the stated inputs are valid.
+These four **new** exercises are for students who want more practice. They are not section problems and are **not required submissions**. Write your own solution with parameter and return annotations **and** a docstring for every function; no solutions are provided here. Assume the stated inputs are valid.
 
 ### A. Bonus points — default argument
 
-Define `final_points(base_points, bonus=5)` to **return** the sum of a nonnegative integer `base_points` and the default bonus. Read only `base_points` from one line; call the function without passing a bonus. Print `Points: X`.
+Define `final_points(base_points: int, bonus: int = 5) -> int` to **return** the sum of a nonnegative integer `base_points` and the default bonus. Read only `base_points` from one line; call the function without passing a bonus. Print `Points: X`.
 
 | Input | Expected output |
 | --- | --- |
@@ -374,7 +435,7 @@ Hint: The missing argument is supplied by the function definition, not by an ext
 
 ### B. Study log — mixed input and one formatted return value
 
-Define `study_summary(minutes, sessions)` to return one string in the format `Study: X minutes over Y sessions`. Read two nonnegative integers from **one** line. Print only the returned string.
+Define `study_summary(minutes: int, sessions: int) -> str` to return one string in the format `Study: X minutes over Y sessions`. Read two nonnegative integers from **one** line. Print only the returned string.
 
 | Input | Expected output |
 | --- | --- |
@@ -385,7 +446,7 @@ Hint: `.split()` gives strings; convert both values to integers before passing t
 
 ### C. Stage rental — nested helper
 
-Define `rental_cost(hours, rate_per_hour)` with an inner helper `usage_cost(hours, rate_per_hour)` that returns `hours * rate_per_hour`. The outer function returns the helper's result plus a fixed setup charge of `2.50`. Read two nonnegative floats on one line. Print `Cost: X.XX`. Both functions need docstrings.
+Define `rental_cost(hours: float, rate_per_hour: float) -> float` with an inner helper `usage_cost(hours: float, rate_per_hour: float) -> float` that returns `hours * rate_per_hour`. The outer function returns the helper's result plus a fixed setup charge of `2.50`. Read two nonnegative floats on one line. Print `Cost: X.XX`. Both functions need docstrings.
 
 | Input | Expected output |
 | --- | --- |
@@ -396,7 +457,7 @@ Hint: The inner function should return one number; the outer function should ret
 
 ### D. Circle measurements — module and two output lines
 
-Import `math`. Define `circumference(radius)` to return `2 * math.pi * radius` and `circle_area(radius)` to return `math.pi * radius ** 2`. Read one nonnegative float. Print `Circumference: X.XX` on the first line and `Area: X.XX` on the second. Give each function a docstring.
+Import `math`. Define `circumference(radius: float) -> float` to return `2 * math.pi * radius` and `circle_area(radius: float) -> float` to return `math.pi * radius ** 2`. Read one nonnegative float. Print `Circumference: X.XX` on the first line and `Area: X.XX` on the second. Give each function a docstring.
 
 | Input | Expected output |
 | --- | --- |
@@ -408,7 +469,7 @@ Hint: `math.pi` is a number from the imported module; it is not a function call.
 ## Before you submit the assigned Lab 03
 
 - Use the **current Fall 2026 sheet for your own section**, not another section's questions and not an older year's sheet.
-- Match every required function name, parameter, return type, docstring, and requested nested helper.
+- Match every required function name, parameter, return behavior, docstring, and requested nested helper. Practice basic parameter and return annotations, but remember that annotations do not convert input or replace a docstring.
 - Use only the input lines stated in each problem; no prompts or invented optional inputs.
 - Check valid edge cases and exact output formatting after the final code change.
 - Use one `.py` file per assigned problem, named as required by the handout, such as `Lab3_P1_<YourStudentID>.py` for Problem 1.
