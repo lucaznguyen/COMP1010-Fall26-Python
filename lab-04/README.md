@@ -6,7 +6,7 @@
 
 **Preparation:** Lecture 06 (Creating and Importing Modules) and Lecture 07 (Strings)
 
-This guide supports the current Fall 2026 Lab 04 for **IPRFAL261–IPRFAL264**. It teaches shared techniques with independent examples, worked traces, valid extreme cases, and optional practice. It does **not** contain the assigned question sheets, PDFs, or complete solutions to the section problems. Get the current sheet for **your own section** from the [official course source](handouts/README.md). If this guide and your sheet differ, follow the sheet.
+This guide supports the current Fall 2026 Lab 04 for **IPRFAL261–IPRFAL264**. It teaches shared techniques with independent examples, worked traces, valid extreme cases, and optional practice. It does **not** contain the assigned question sheets, PDFs, or complete solutions to the section problems. Get the current sheet for **your own section** from the official course source. If this guide and your sheet differ, follow the sheet.
 
 Assume all inputs satisfy the stated constraints. The current assigned tasks do not need `if`/`else`, loops, `try`/`except`, or `assert`. An extreme case means a **valid boundary case**, not invalid input your program must reject. Short strings and spaces-only strings deserve attention, but they are not valid for every problem.
 

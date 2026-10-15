@@ -2,6 +2,8 @@
 
 Course materials for COMP1010 at VinUniversity. Lab materials are added as they become available.
 
+Each lab folder contains one `README.md` with its tutorial, independent examples, practice, and submission checklist. Get assigned question sheets from the official course source; this repository does not store question sheets, PDFs, Overleaf source/assets, or complete assigned solutions. Shared setup, submission, and study-resource guides stay at the repository root.
+
 ## Course Staff
 
 ### Instructors
@@ -32,7 +34,7 @@ Course materials for COMP1010 at VinUniversity. Lab materials are added as they 
 - Set up Python and PyCharm using the [environment setup guide](setup-tutorial.md).
 - Review the [Codeforces and Canvas submission instructions](lab-tutorial.md).
 - Prepare with the [Lab 01 guide](lab-01/README.md), [Lab 02 guide](lab-02/README.md), [Lab 03 guide](lab-03/README.md), and [Lab 04 guide](lab-04/README.md). Get each lab's question sheet from the official course source.
-- Use the checklist linked from each lab; course grading and late-submission rules follow the official course policy.
+- Use the submission checklist in each lab's README; course grading and late-submission rules follow the official course policy.
 
 ## Sources and Resources
 

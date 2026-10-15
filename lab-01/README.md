@@ -6,7 +6,7 @@
 
 This guide reviews the small Python building blocks that are useful before Lab 01: displaying text, storing values, reading input, converting types, doing simple arithmetic, and matching an output format. The examples and practice prompts below use different situations from the lab problems; they are preparation, not lab solutions.
 
-For the official problem statements, examples, and rules, read the [Lab 01 handout](fall26_comp1010_lab01.pdf). Set up your environment with the [Python and PyCharm guide](../setup-tutorial.md), and see [submission instructions](../lab-tutorial.md) before turning in work.
+Get the current Lab 01 question sheet, official examples, and rules from the official course source. Question sheets and PDFs are not stored in this repository. Set up your environment with the [Python and PyCharm guide](../setup-tutorial.md), and see [submission instructions](../lab-tutorial.md) before turning in work.
 
 ## Learning Goals
 
@@ -180,7 +180,11 @@ For each exercise, check the input type, test with more than one set of values, 
 
 ## Before You Submit Lab 01
 
-- Read the full [handout](fall26_comp1010_lab01.pdf); it is the source for the actual questions and required output.
+- Read the current handout from the official course source; it is the source for the actual questions and required output.
+- Write each program in Python 3 and follow the input/output requirements exactly.
 - Save each problem as its own `.py` file using the handout's filename pattern.
-- Submit the same files to Codeforces and Canvas as described in the [submission guide](../lab-tutorial.md).
-- Review the [completion checklist](../grading-criteria.md).
+- Use meaningful names and comments where they clarify the code.
+- Submit your own work; do not copy or share solutions with another student.
+- Submit the same solution files to Codeforces and Canvas before the end of the lab session, as described in the [submission guide](../lab-tutorial.md).
+
+Scoring and late-submission penalties follow the official course policy.

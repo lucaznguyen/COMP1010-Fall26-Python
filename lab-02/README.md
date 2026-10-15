@@ -5,10 +5,6 @@
 
 This guide reviews Python concepts for Lab 02 with small examples and study guidance. It does not contain the section question sheets or solutions. Get the question sheet for your assigned section from the official course source before starting.
 
-## Question Sheet
-
-Question sheets are distributed through the official course source and are not stored in this repository. Make sure you use the sheet assigned to your section. The [handout notes](handouts/README.md) explain this repository's scope.
-
 ## What You Will Practice
 
 - Build expressions with integer arithmetic, including `//`, `%`, and `**`.
