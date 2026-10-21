@@ -765,96 +765,7 @@ Separate malformed input from an unreachable state. Check impossible-state rules
 
 Swapping two rectangles should not change their relationship label. Reordering triangle sides should not change the classification. Swapping two players should exchange player-specific winner labels while preserving a draw or invalid state. Not every task is symmetric: donor/recipient order and the order of priority rules can matter.
 
-## 16. Section-specific testing prompts
-
-Use only your own section's handout to implement the program. The tables below identify what to **test and reason about**, without supplying complete decision trees or code. These are study prompts, not an extra list of required outputs or submission rules.
-
-### IPRFAL261
-
-| Problem | Important cases to construct | Common mistake to avoid |
-| --- | --- | --- |
-| P1: Triangle Type Classifier | A one-unit side; all equal; equal pairs in different positions; right scalene sides in different orders; positive sides whose two-side sum equals the third; zero/negative/non-integer input; large permitted sides. | Treating equality in the triangle inequality as valid, or treating all-equal data as exactly-two-equal. Distinguish `Not a Triangle` from an input error. |
-| P2: Rock–Paper–Scissors Referee | Every move against itself; player-swapped rounds; mixed case; permitted outer spaces; an empty or spaces-only move; an unknown word. | Normalizing only one player's move, accepting an invalid move through `or "paper"`, or silently defaulting to Player 2 before validating both moves. |
-| P3: 12-Hour Clock with Greeting | Midnight and noon; minute `00` and `59`; the minute before and at each greeting boundary; valid outer spaces; too-short fields; hour `24`; minute `60`; a wrong separator. | Accepting `9:05` as fixed-width input, dropping minute zeros, using converted 12-hour time for the greeting, or deciding that every displayed `12` is PM. |
-| P4: Rectangle Relationship | Separation in only one direction; an edge touch; a corner touch; positive-area partial intersection; containment with coincident edges; identical rectangles; zero/reversed width or height; wrong token count; large positive/negative coordinates. | Confusing contact with area overlap, checking containment too late, assuming the second rectangle cannot contain the first, or indexing before checking four tokens. |
-
-For P3, compare `04:59` with `05:00`, `11:59` with `12:00`, `16:59` with `17:00`, and `20:59` with `21:00`. Keep the original 24-hour value available. For P4, after making a case, swap the two input lines and check the same relationship still holds.
-
-### IPRFAL262
-
-| Problem | Important cases to construct | Common mistake to avoid |
-| --- | --- | --- |
-| P1: Point Locator | Origin; each signed half-axis; each quadrant; coordinates at the permitted magnitude limits; non-integer text. | Treating zero as positive/negative, or letting a general axis branch absorb the origin. |
-| P2: Speeding Ticket | Speed equal to or below the limit; excess values just below, at, and above every band endpoint; each band with both Boolean tokens; zero speed; invalid limit; invalid Boolean spelling or spaces. | Parsing `False` with `bool()`, doubling a replacement amount that is explicitly not doubled, modifying suspension/no-fine results, or printing commas in amounts. |
-| P3: Equation Solver | A genuine quadratic with positive, zero, and negative discriminant; negative leading coefficient; zero leading coefficient but nonzero linear coefficient; both zero coefficients with zero/nonzero constant; a zero root; malformed coefficient text. | Dividing before checking zero, taking a real square root of a negative number, assuming formula order equals ascending order, or leaving `-0.00`. |
-| P4: Tic-Tac-Toe Judge | Empty board; one legal first move; row/column/diagonal wins; a full non-winning board; a full winning board; wrong turn counts; simultaneous winners; a winner inconsistent with counts; malformed row length/case/character/spaces. | Stripping a malformed row into validity, checking only rows, calling every full board a draw, or printing a winner before checking impossible-state rules. |
-
-For P2, select one fixed positive speed limit and change only the **excess** around the endpoints `0`, `10`, `20`, and `35`. Then flip the school-zone token while keeping the numeric lines unchanged. For P4, checking character counts is important but does not replace checking winning lines and winner/count consistency.
-
-### IPRFAL263
-
-| Problem | Important cases to construct | Common mistake to avoid |
-| --- | --- | --- |
-| P1: EV Trip Advisor | Zero battery and zero distance; exactly enough range; slightly too much distance; remaining charge just below, at, and above the advice boundary; battery endpoints; decimal distance; invalid/nonfinite numbers. | Rejecting a reachable trip with zero charge left, comparing rounded charge, reading a `%` sign as part of the number, or treating a failed trip as malformed input. |
-| P2: Email Address Checker | Empty line; outer/internal spaces; no separator or repeated separators; empty username; domain without a dot; dot at either domain end; mixed-case education endings; an education substring followed by another suffix; multiple simultaneous rule failures. | Stripping the original address, using `find()` to prove uniqueness, reporting every failure instead of the first, or adding real-world email rules not present in this exercise. |
-| P3: Loan Approval | Income above zero with zero debt; debt ratios below, at, and above the stated boundaries; credit-score endpoints and decision thresholds; both employment values; cases failing more than one decision rule; zero income; malformed/nonfinite input. | Dividing before validating income, testing a later approval rule before an earlier rejection, or relaxing the exact Boolean spelling. |
-| P4: Blood Transfusion Checker | Permitted case/outer-space variations; malformed type text; the special donor case; matching types; situations where only one compatibility condition fails; situations where both fail; reversed donor/recipient order. | Assuming compatibility is symmetric, stopping after the first failed condition when both must be reported, or normalizing away internal spaces. |
-
-For P1, zero distance is allowed, and exactly zero remaining charge is not the same as being unable to reach the destination. For P2, an ending such as `.edu.vn.com` is not an education ending. Apply **only** the handout's simplified email rules, not a complete Internet email standard.
-
-P4 is a simplified programming exercise. Use the supplied classroom rules only; this guide is not a clinical decision tool.
-
-### IPRFAL264
-
-| Problem | Important cases to construct | Common mistake to avoid |
-| --- | --- | --- |
-| P1: Parcel Size Category | Actual weight larger than volumetric weight, and the reverse; equality between them; category endpoints; one long side with otherwise small dimensions; permitted decimal weight; zero/negative dimensions; too few/many dimension tokens. | Classifying actual weight instead of chargeable weight, requiring every side to be oversized when only one is enough, or rounding before deciding. |
-| P2: Smart Irrigation Controller | Moisture endpoints and both sides of each moisture threshold; both rain tokens; temperature just below and at the heat threshold; wet soil with rain and heat; very dry soil with rain and heat; malformed/nonfinite input. | Letting heat override a skip or affect a rain-specific fixed watering case, or applying the rain branch before a higher-priority wet-soil decision. |
-| P3: Hex Color Analyzer | All-black/all-white; equal channels near the tone threshold; a unique largest channel; two largest tied; two lower channels tied; lowercase hex; allowed outer spaces; wrong prefix/length; illegal/sign characters. | Assuming two equal channels always mean `Mixed`, treating channel magnitude as weighted brightness, accepting signed hex through conversion alone, or printing extra labels. |
-| P4: Badminton Set Judge | Initial score; a normal finish; an unfinished one-point lead; deuce and extended play; cap-boundary finish; equal scores at the cap; points above the cap; a score that would require playing after an earlier win; a negative or non-integer score. | Using only “leader has enough points,” ignoring the stop-at-win rule, confusing a one-point lead with a two-point lead, or treating an impossible nonnegative score as malformed input. |
-
-For P1, permute the three dimensions and check that their category and chargeable weight stay the same. For P3, ties below the maximum do not prevent a unique dominant channel. For P4, `29–29`, `30–29`, and `30–30` are useful distinct states to reason about from the stated cap rule; they are not interchangeable “high scores.”
-
-## 17. Building a useful test plan
-
-A **test case** includes both input and an expected output. Running input and deciding that the answer “looks reasonable” is not enough.
-
-### Start with independent expectations
-
-1. Read the rules and calculate the expected answer on paper.
-2. Save the exact input lines and expected output text.
-3. Run the program and compare the actual result.
-4. If they differ, trace the earliest wrong decision.
-5. Keep the failing case after fixing it, so later edits do not reintroduce the bug.
-
-Use a worksheet such as:
-
-| Case | Input | Expected output | Actual output | Purpose |
-| --- | --- | --- | --- | --- |
-| Normal locker stay | One line: `4` | `Extended` | Fill in after running. | Longer valid stay. |
-| Locker endpoint | One line: `2` | `Short` | Fill in after running. | Included threshold. |
-| Locker invalid range | One line: `0` | The toy program's specified error line. | Fill in after running. | Validation before classification. |
-
-### Cover the decisions, not just several random numbers
-
-- Include at least one case reaching each result category.
-- Include equality at every threshold, not only values far from it.
-- Include invalid format and invalid checked range as separate cases.
-- For two flags, examine all four combinations.
-- For priority rules, construct an input satisfying two conditions at once.
-- For parsing, vary token count, spaces, case, empty text, and missing lines only as relevant to the contract.
-- Include valid minimum and maximum constraints. An extreme input is not automatically invalid.
-- Use symmetry checks where they are legitimate, as described in Section 15.
-
-Reaching every branch is useful but not proof of correctness. A branch may still contain a wrong formula, incorrect label, or formatting error. Check the returned value and the full printed line.
-
-### Function tests and whole-program tests
-
-A function test can call a helper directly and compare its return value with `assert`. A whole-program test also checks the line-reading layout, exception handlers, and exact output. You need both perspectives: a correct function can be connected to the wrong input lines, and a correct calculation can print twice.
-
-Do not paste all tests at the bottom of the file you submit. Keep scratch tests separate on your computer, or remove the test calls before submission. Restart the program for each independent input case; the current lab does not ask you to build an input-retry loop.
-
-## 18. Common questions
+## 16. Common questions
 
 ### Should I reject every value outside a displayed expected range?
 
@@ -892,7 +803,7 @@ No. A helper can raise an appropriate exception; the main program catches it aro
 
 No. Keep a separate program for each problem. A menu would add input and output that the judge does not expect.
 
-## 19. Troubleshooting
+## 17. Troubleshooting
 
 | Symptom | Likely cause | Check |
 | --- | --- | --- |
@@ -911,7 +822,7 @@ No. Keep a separate program for each problem. A menu would add input and output 
 | Valid impossible-state example is accepted | Checked only current score/winning appearance. | Apply reachability and stop-at-win rules first. |
 | Local sample passes but hidden cases fail | Only ordinary examples were tested. | Add equality, ties, multiple simultaneous conditions, and invalid input. |
 
-## 20. Optional extra practice
+## 18. Optional extra practice
 
 These are **new, optional exercises**, not assigned section problems or required submissions. No full solutions are supplied. Use simple annotations, a docstring for every function, one returned result, and a main program with appropriate error handling. No loops are needed. Plan your tests before implementing.
 
