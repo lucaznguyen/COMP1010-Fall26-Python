@@ -29,12 +29,14 @@ Each lab folder contains one `README.md` with its tutorial, independent examples
 | 03 | Functions and Modules | [Lab 03 guide](lab-03/README.md) |
 | 04 | Modules and Strings | [Lab 04 guide](lab-04/README.md) |
 | 05 | Specification, Testing, Conditions, and Flow Control | [Lab 05 guide](lab-05/README.md) |
+| 06 | Lists and Sequences | [Lab 06 guide](lab-06/README.md) |
+| 07 | Lists, Iterations and Loops | [Lab 07 guide](lab-07/README.md) |
 
 ## Lab Assignments
 
 - Set up Python and PyCharm using the [environment setup guide](setup-tutorial.md).
 - Review the [Codeforces and Canvas submission instructions](lab-tutorial.md).
-- Prepare with the [Lab 01 guide](lab-01/README.md), [Lab 02 guide](lab-02/README.md), [Lab 03 guide](lab-03/README.md), [Lab 04 guide](lab-04/README.md), and [Lab 05 guide](lab-05/README.md). Get each lab's question sheet from the official course source.
+- Prepare with the [Lab 01 guide](lab-01/README.md), [Lab 02 guide](lab-02/README.md), [Lab 03 guide](lab-03/README.md), [Lab 04 guide](lab-04/README.md), [Lab 05 guide](lab-05/README.md), [Lab 06 guide](lab-06/README.md), and [Lab 07 guide](lab-07/README.md). Get each lab's question sheet from the official course source.
 - Use the submission checklist in each lab's README; course grading and late-submission rules follow the official course policy.
 
 ## Sources and Resources
