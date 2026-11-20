@@ -8,13 +8,6 @@
 
 This guide supports Fall 2026 Lab 08 for **IPRFAL261–IPRFAL264**. It explains the shared Python techniques through independent examples, worked traces, extreme cases, debugging questions, and optional practice. Use the latest official question sheet for **your own section** for the assigned problems, required functions, limits, and exact output. The examples here are separate from the four assigned programs.
 
-**Submission deadlines:** submit the same four Python 3 programs to **both Codeforces and Canvas** by the deadline for your section. All times below are **Vietnam time (UTC+7)**.
-
-| Section | Deadline |
-| --- | --- |
-| IPRFAL261 and IPRFAL262 | **23:59 on Friday, 20 November 2026** |
-| IPRFAL263 and IPRFAL264 | **23:59 on Sunday, 22 November 2026** |
-
 **Public tests:** from Lab 08, all test inputs and expected outputs are available in the problem's **`all-tests.zip` materials** on Codeforces. The two examples carry 0 points; the other five tests carry 20 points each, for 100 points per problem. Section 24 explains how to use these files for learning and debugging.
 
 ## What you should be able to do
