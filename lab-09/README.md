@@ -6,14 +6,7 @@
 
 This guide supports **IPRFAL261–IPRFAL264** through independent examples, traces, boundary cases, and debugging advice. It does not contain the assigned question sheets or their complete solutions. Use the latest official Lab 09 handout for **your own section**: the sections have different problems and algorithms.
 
-Submit the same four Python 3 programs to **both Codeforces and Canvas** by your section's deadline. All times are Vietnam time (**UTC+7**).
-
-| Section | Lab starts | Deadline: 48 hours after the start |
-| --- | --- | --- |
-| IPRFAL261 | Wednesday, 25 November 2026, 10:30 | **Friday, 27 November 2026, 10:30** |
-| IPRFAL262 | Wednesday, 25 November 2026, 15:00 | **Friday, 27 November 2026, 15:00** |
-| IPRFAL263 | Friday, 27 November 2026, 08:30 | **Sunday, 29 November 2026, 08:30** |
-| IPRFAL264 | Friday, 27 November 2026, 13:30 | **Sunday, 29 November 2026, 13:30** |
+Submit the same four Python 3 programs to **both Codeforces and Canvas**.
 
 ## What to prepare
 
@@ -401,6 +394,6 @@ Implement a comparator for lowercase labels: shorter labels come first; equal-le
 - Keep required function names, parameters, return types, side effects, algorithm, tie-breakers, and output format.
 - Give every function a useful docstring, including helpers and `main`.
 - Test the official examples, boundary cases, and any public tests provided in the contest.
-- Remove prompts and debug prints. Submit identical code to **Codeforces and Canvas** by your section's deadline shown above.
+- Remove prompts and debug prints. Submit identical code to **Codeforces and Canvas**.
 
 For earlier topics, review the [function guide](../lab-03/README.md), [lists guide](../lab-06/README.md), [iteration guide](../lab-07/README.md), and [while/tuple/dictionary guide](../lab-08/README.md). The [platform submission guide](../lab-tutorial.md) explains the general workflow.
