@@ -1,6 +1,7 @@
 # Lab 09: Sorting — Detailed Study Guide
 
-**Course:** COMP1010 - Introduction to Programming  
+**Course:** COMP1010 - Introduction to Programming
+
 **Preparation:** Lecture 16 (Algorithm Design and Linear Search) and Lecture 17 (Sorting and Selection Sort), as well as lists, loops, strings, tuples, dictionaries, and functions from the earlier labs.
 
 This guide supports **IPRFAL261–IPRFAL264** through independent examples, traces, boundary cases, and debugging advice. It does not contain the assigned question sheets or their complete solutions. Use the latest official Lab 09 handout for **your own section**: the sections have different problems and algorithms.
